@@ -1,0 +1,120 @@
+CREATE DATABASE 'glasses'
+
+use('glasses');db.createCollection('glasses',{ validator: { $jsonSchema: {
+  "bsonType": "object",
+  "required": [
+    "brand",
+    "price"
+  ],
+  "properties": {
+    "provider": {
+      "bsonType": "object",
+      "required": [
+        "id",
+        "name",
+        "address",
+        "telephone",
+        "nif"
+      ],
+      "properties": {
+        "address": {
+          "bsonType": "object",
+          "required": [
+            "street",
+            "street_number",
+            "floor",
+            "city",
+            "postal_code",
+            "country"
+          ],
+          "properties": {
+            "door": {
+              "bsonType": "int"
+            },
+            "country": {
+              "bsonType": "string"
+            },
+            "city": {
+              "bsonType": "string"
+            },
+            "street": {
+              "bsonType": "string"
+            },
+            "street_number": {
+              "bsonType": "int"
+            },
+            "floor": {
+              "bsonType": "int"
+            },
+            "postal_code": {
+              "bsonType": "int"
+            }
+          }
+        },
+        "name": {
+          "bsonType": "string"
+        },
+        "telephone": {
+          "bsonType": "int"
+        },
+        "nif": {
+          "bsonType": "string"
+        },
+        "id": {
+          "bsonType": "int"
+        },
+        "fax": {
+          "bsonType": "int"
+        }
+      }
+    },
+    "price": {
+      "bsonType": "double"
+    },
+    "bought_by": {
+      "bsonType": "object",
+      "properties": {
+        "client": {
+          "bsonType": "array",
+          "items": {
+            "bsonType": "object",
+            "required": [
+              "client_id",
+              "name",
+              "address",
+              "telephon",
+              "email",
+              "register_date"
+            ],
+            "properties": {
+              "address": {
+                "bsonType": "string"
+              },
+              "name": {
+                "bsonType": "string"
+              },
+              "register_date": {
+                "bsonType": "date"
+              },
+              "telephon": {
+                "bsonType": "int"
+              },
+              "client_id": {
+                "bsonType": "int"
+              },
+              "email": {
+                "bsonType": "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    "brand": {
+      "bsonType": "string"
+    },
+    "frame": {
+      "bsonType": "string"
+    }
+  }
+} }});

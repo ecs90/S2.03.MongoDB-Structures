@@ -1,0 +1,84 @@
+CREATE DATABASE 'cliente'
+
+use('cliente');db.createCollection('client',{ validator: { $jsonSchema: {
+  "bsonType": "object",
+  "required": [
+    "name",
+    "data"
+  ],
+  "properties": {
+    "data": {
+      "bsonType": "object",
+      "required": [
+        "address",
+        "telephone",
+        "email",
+        "register_date"
+      ],
+      "properties": {
+        "address": {
+          "bsonType": "string"
+        },
+        "telephone": {
+          "bsonType": "int"
+        },
+        "register_date": {
+          "bsonType": "date"
+        },
+        "email": {
+          "bsonType": "string"
+        }
+      }
+    },
+    "last_shopping": {
+      "bsonType": "object",
+      "properties": {
+        "brand": {
+          "bsonType": "object",
+          "properties": {
+            "glass": {
+              "bsonType": "object",
+              "properties": {
+                "color": {
+                  "bsonType": "object",
+                  "properties": {
+                    "left": {
+                      "bsonType": "string"
+                    },
+                    "right": {
+                      "bsonType": "string"
+                    }
+                  }
+                },
+                "graduation": {
+                  "bsonType": "object",
+                  "properties": {
+                    "left": {
+                      "bsonType": "double"
+                    },
+                    "right": {
+                      "bsonType": "double"
+                    }
+                  }
+                }
+              }
+            },
+            "price": {
+              "bsonType": "double"
+            },
+            "frame_type": {
+              "enum": [
+                "floating",
+                "paste",
+                "metallic"
+              ]
+            }
+          }
+        }
+      }
+    },
+    "name": {
+      "bsonType": "string"
+    }
+  }
+} }});
